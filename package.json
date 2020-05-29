@@ -1,0 +1,25 @@
+{
+  "name": "grandma-bot",
+  "version": "1.0.0",
+  "description": "A small tool to send regular messages to your worried grandmother.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pitscher/grandma-bot.git"
+  },
+  "author": "pitscher",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/pitscher/grandma-bot/issues"
+  },
+  "homepage": "https://github.com/pitscher/grandma-bot#readme",
+  "dependencies": {
+    "twilio": "^3.44.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
