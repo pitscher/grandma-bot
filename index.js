@@ -10,3 +10,5 @@ function getRandomMessage(messages) {
 
 var selectedMessage = getRandomMessage(messages);
 console.log(selectedMessage);
+
+sendMessageAsSms(user.phone, selectedMessage);

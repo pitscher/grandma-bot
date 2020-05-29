@@ -1,13 +1,16 @@
+require('dotenv').config();
+
 const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
 const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
+const messageReceiver = process.env.RECEIVER_PHONE_NUMBER;
 
-const sendSms = (phone, message) => {
+const sendMessageAsSms = (messageReceiver, selectedMessage) => {
   const client = require('twilio')(twilioAccountSid, twilioAuthToken);
   client.messages
     .create({
-      body: message,
+      body: selectedMessage,
       from: process.env.TWILIO_PHONE_NUMBER,
-      to: phone
+      to: messageReceiver
     })
     .then(message => console.log(message.sid));
 }
