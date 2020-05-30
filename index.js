@@ -2,7 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const sendMessageAsSms = require('./twilio');
 const messageReceiver = process.env.RECEIVER_PHONE_NUMBER;
-const messageTest = process.env.PERFORM_MESSAGE_TEST;
+const messageTestMode = process.env.PERFORM_MESSAGE_TEST;
 const messagesFile = './messages.txt';
 
 // Check if messages.txt file exists and can be accessed
@@ -12,7 +12,7 @@ if (fs.existsSync(messagesFile)) {
   throw new Error('The messages.txt file does not exist or could not be accessed');
 }
 
-if (messageTest === "true") {
+if (messageTestMode === "true") {
   console.log('--- Performing message test ---' + '\n' + 'Condition: All messages must contain <160 characters (to avoid sms splitting and multiple billing)');
   var messagesToTest = fs.readFileSync('messages.txt', 'utf8').split('\n');
   // if (messagesToTest = )
@@ -29,6 +29,7 @@ if (messageTest === "true") {
 var messages = fs.readFileSync(messagesFile, 'utf8').split('\n');
 
 function getRandomMessage(messages) {
+  console.log('Selecting 1 message of ' + messages.length + ' available')
   return messages[Math.floor(Math.random() * messages.length)];
 }
 
