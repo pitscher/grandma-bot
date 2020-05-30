@@ -14,7 +14,7 @@ if (fs.existsSync(messagesFile)) {
 
 if (messageTestMode === "true") {
   console.log('--- Performing message test ---' + '\n' + 'Condition: All messages must contain <160 characters (to avoid sms splitting and multiple billing)');
-  var messagesToTest = fs.readFileSync('messages.txt', 'utf8').split('\n');
+  var messagesToTest = fs.readFileSync(messagesFile, 'utf8').split('\n');
   // if (messagesToTest = )
   //   console.log(messagesToTest);
 
