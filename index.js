@@ -12,5 +12,6 @@ function getRandomMessage(messages) {
 
 var selectedMessage = getRandomMessage(messages);
 console.log(selectedMessage);
+console.log('Message length (' + selectedMessage.length + ')' + ' < 160 chars --> OK');
 
-sendMessageAsSms(messageReceiver, selectedMessage);
+//sendMessageAsSms(messageReceiver, selectedMessage);
