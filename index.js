@@ -1,3 +1,4 @@
+require('dotenv').config();
 const fs = require('fs');
 const sendMessageAsSms = require('./twilio');
 const messageReceiver = process.env.RECEIVER_PHONE_NUMBER;
