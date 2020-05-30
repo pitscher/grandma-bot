@@ -11,7 +11,18 @@ function getRandomMessage(messages) {
 }
 
 var selectedMessage = getRandomMessage(messages);
-console.log(selectedMessage);
-console.log('Message length (' + selectedMessage.length + ')' + ' < 160 chars --> OK');
+console.log('Selected message:' + '\n' + selectedMessage);
+
+// SMS messages should be <160 chars to avoid splitting and multiple billing
+function checkMessageLength(selectedMessage) {
+  if (selectedMessage.length < 160) {
+    console.log('Message length (' + selectedMessage.length + ') < 160 chars --> OK');
+  } else {
+    console.log('Message length (' + selectedMessage.length + ') > 160 chars --> NOT OK');
+    throw new Error('Message length is too large')
+  }
+}
+
+checkMessageLength(selectedMessage);
 
 //sendMessageAsSms(messageReceiver, selectedMessage);
