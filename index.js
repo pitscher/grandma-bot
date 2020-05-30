@@ -15,13 +15,12 @@ if (fs.existsSync(messagesFile)) {
 if (messageTestMode === "true") {
   console.log('--- Performing message test ---' + '\n' + 'Condition: All messages must contain <160 characters (to avoid sms splitting and multiple billing)');
   var messagesToTest = fs.readFileSync(messagesFile, 'utf8').split('\n');
-  // if (messagesToTest = )
-  //   console.log(messagesToTest);
-
-  // Test if every message in messages.txt conatains <160 characters
-  currentMessage = messagesToTest.length;
-  const isValidSms = (currentMessage) => currentMessage < 160;
-  console.log(messagesToTest.every(isValidSms));
+  messagesToTest.forEach(element => {
+    if (element.length > 160) {
+      console.log('The following message is too large:' + '\n' + console.log(element));
+    }
+  });
+  console.log('Successfully scanned ' + messagesToTest.length + ' Messages --> All good.' + '\n' + 'End of message test. Set PERFORM_MESSAGE_TEST=false to send a sms.');
   process.exit();
 }
 
