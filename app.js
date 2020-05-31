@@ -11,6 +11,7 @@ if (!fs.existsSync(messagesFile)) {
   throw new Error('The messages.txt file does not exist or could not be accessed');
 }
 
+// ##### START PERFORM MESSAGE TEST RELATED CODE #####
 // Trigger message test if PERFORM_MESSAGE_TEST=true
 if (messageTestMode === "true") {
   console.log('--- PERFORMING MESSAGE TEST ---' + '\n' + 'Condition: All messages must contain <160 characters (to avoid sms splitting and multiple billing)' + '\n');
@@ -45,6 +46,7 @@ if (messageTestMode === "true") {
     '\n\n' + '--- ENDING MESSAGE TEST ---' + '\n' + '[i] Unset PERFORM_MESSAGE_TEST to not trigger the message test at the next startup.');
   process.exit();
 }
+// ##### END PERFORM MESSAGE TEST RELATED CODE #####
 
 // Read line by line of messages.txt and create an object of all messages
 var messages = fs.readFileSync(messagesFile, 'utf8').split('\n');
