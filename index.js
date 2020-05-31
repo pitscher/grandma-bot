@@ -12,15 +12,23 @@ if (fs.existsSync(messagesFile)) {
   throw new Error('The messages.txt file does not exist or could not be accessed');
 }
 
+// Trigger message test if PERFORM_MESSAGE_TEST=true
 if (messageTestMode === "true") {
-  console.log('--- Performing message test ---' + '\n' + 'Condition: All messages must contain <160 characters (to avoid sms splitting and multiple billing)');
+  console.log('--- Performing message test ---' + '\n' + 'Condition: All messages must contain <160 characters (to avoid sms splitting and multiple billing)' + '\n');
   var messagesToTest = fs.readFileSync(messagesFile, 'utf8').split('\n');
-  messagesToTest.forEach(element => {
-    if (element.length > 160) {
-      console.log('The following message is too large:' + '\n' + console.log(element));
+
+  // validateMessage() gets called forEach message in messages.txt
+  function validateMessage(item) {
+    if (item.length > 160) {
+      var messagePosition = messagesToTest.indexOf(item) + 1; // +1 because counting begins at position 0
+      console.log('[FAIL] The following message at line ' + messagePosition + ' in messages.txt is too large:' + '\n\n' + item + '\n');
+      process.exit();
     }
-  });
-  console.log('Successfully scanned ' + messagesToTest.length + ' Messages --> All good.' + '\n' + 'End of message test. Set PERFORM_MESSAGE_TEST=false to send a sms.');
+  }
+
+  messagesToTest.forEach(validateMessage);
+  console.log('[OK] Successfully scanned ' + messagesToTest.length + ' Messages --> All good.' +
+    '\n\n' + '--- End of message test ---' + '\n' + '[i] Unset PERFORM_MESSAGE_TEST to not trigger the message test at the next startup.');
   process.exit();
 }
 
