@@ -6,9 +6,7 @@ const messageTestMode = process.env.PERFORM_MESSAGE_TEST;
 const messagesFile = './messages.txt';
 
 // Check if messages.txt file exists and can be accessed
-if (fs.existsSync(messagesFile)) {
-  //messages.txt exists. All fine.
-} else {
+if (!fs.existsSync(messagesFile)) {
   throw new Error('The messages.txt file does not exist or could not be accessed');
 }
 
