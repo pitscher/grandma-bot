@@ -17,6 +17,12 @@ if (messageTestMode === "true") {
   console.log('--- Performing message test ---' + '\n' + 'Condition: All messages must contain <160 characters (to avoid sms splitting and multiple billing)' + '\n');
   var messagesToTest = fs.readFileSync(messagesFile, 'utf8').split('\n');
 
+  // Warn user if number of provided messages is too low
+  if (messagesToTest.length < 15) {
+    console.log('[INFO] Low number of messages!' + '\n' +
+      'You should provide more messages because this tool relies on a random selection. To always send the same message is not a good idea.' + '\n');
+  }
+
   // validateMessage() gets called forEach message in messages.txt
   function validateMessage(item) {
     if (item.length > 160) {
