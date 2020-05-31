@@ -1,0 +1,17 @@
+# Folders
+.git
+.vscode
+node_modules
+docs
+db
+
+# Files
+gitlab-ci.yml
+.cache
+dummy.json
+npm-debug.log
+*.md
+.gitignore
+mongostart.sh
+.editorconfig
+.eslintrc.json
