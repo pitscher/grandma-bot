@@ -3,6 +3,7 @@ const fs = require('fs');
 const sendMessageAsSms = require('./twilio');
 const messageReceiver = process.env.RECEIVER_PHONE_NUMBER;
 const messageTestMode = process.env.PERFORM_MESSAGE_TEST;
+const minMsgAmmount = process.env.MIN_MSG_AMMOUNT;
 const messagesFile = './messages.txt';
 
 // Check if messages.txt file exists and can be accessed
@@ -16,7 +17,7 @@ if (messageTestMode === "true") {
   var messagesToTest = fs.readFileSync(messagesFile, 'utf8').split('\n');
 
   // Warn user if number of provided messages is too low
-  if (messagesToTest.length < 15) {
+  if (messagesToTest.length < minMsgAmmount) {
     console.log('[INFO] Low number of messages!' + '\n' +
       'You should provide more messages because this tool relies on a random selection. To always send the same message is not a good idea.' + '\n');
   }
