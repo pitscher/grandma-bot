@@ -14,7 +14,7 @@ if (fs.existsSync(messagesFile)) {
 
 // Trigger message test if PERFORM_MESSAGE_TEST=true
 if (messageTestMode === "true") {
-  console.log('--- Performing message test ---' + '\n' + 'Condition: All messages must contain <160 characters (to avoid sms splitting and multiple billing)' + '\n');
+  console.log('--- PERFORMING MESSAGE TEST ---' + '\n' + 'Condition: All messages must contain <160 characters (to avoid sms splitting and multiple billing)' + '\n');
   var messagesToTest = fs.readFileSync(messagesFile, 'utf8').split('\n');
 
   // Warn user if number of provided messages is too low
@@ -34,7 +34,7 @@ if (messageTestMode === "true") {
 
   messagesToTest.forEach(validateMessage);
   console.log('[OK] Successfully scanned ' + messagesToTest.length + ' Messages --> All good.' +
-    '\n\n' + '--- End of message test ---' + '\n' + '[i] Unset PERFORM_MESSAGE_TEST to not trigger the message test at the next startup.');
+    '\n\n' + '--- ENDING MESSAGE TEST ---' + '\n' + '[i] Unset PERFORM_MESSAGE_TEST to not trigger the message test at the next startup.');
   process.exit();
 }
 
