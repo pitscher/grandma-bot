@@ -23,8 +23,16 @@ if (messageTestMode === "true") {
 
   // validateMessage() gets called forEach message in messages.txt
   function validateMessage(item) {
+    var messagePosition = messagesToTest.indexOf(item) + 1; // +1 because counting begins at position 0
+
+    // Ensure there is no empty message in messages.txt
+    if (item.length == 0) {
+      console.log('[FAIL] The message at line ' + messagePosition + ' in messages.txt is empty' + '\n\n');
+      process.exit();
+    }
+
+    // Ensure there is no oversized message in messages.txt
     if (item.length > 160) {
-      var messagePosition = messagesToTest.indexOf(item) + 1; // +1 because counting begins at position 0
       console.log('[FAIL] The following message at line ' + messagePosition + ' in messages.txt is too large:' + '\n\n' + item + '\n');
       process.exit();
     }
@@ -41,7 +49,7 @@ if (messageTestMode === "true") {
 var messages = fs.readFileSync(messagesFile, 'utf8').split('\n');
 
 function getRandomMessage(messages) {
-  console.log('Selecting 1 message of ' + messages.length + ' available')
+  console.log('Selecting 1 message of ' + messages.length + ' available');
   return messages[Math.floor(Math.random() * messages.length)];
 }
 
