@@ -2,10 +2,10 @@
   "name": "grandma-bot",
   "version": "1.0.0",
   "description": "A small tool to send regular messages to your worried grandmother.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
