@@ -32,6 +32,7 @@ if (messageTestMode === "true") {
     }
   }
 
+  // Inform user if messages are good and exit
   messagesToTest.forEach(validateMessage);
   console.log('[OK] Successfully scanned ' + messagesToTest.length + ' Messages --> All good.' +
     '\n\n' + '--- ENDING MESSAGE TEST ---' + '\n' + '[i] Unset PERFORM_MESSAGE_TEST to not trigger the message test at the next startup.');
