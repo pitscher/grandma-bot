@@ -29,13 +29,15 @@ if (messageTestMode === "true") {
 
     // Ensure there is no empty message in messages.txt
     if (item.length == 0) {
-      console.log('[FAIL] The message at line ' + messagePosition + ' in messages.txt is empty' + '\n\n');
+      console.log('[FAIL] The message at line ' + messagePosition + ' in messages.txt is empty' + '\n');
+      console.log('--- ENDING MESSAGE TEST ---');
       process.exit();
     }
 
     // Ensure there is no oversized message in messages.txt
     if (item.length > 160) {
       console.log('[FAIL] The following message at line ' + messagePosition + ' in messages.txt is too large:' + '\n\n' + item + '\n');
+      console.log('--- ENDING MESSAGE TEST ---');
       process.exit();
     }
   }
