@@ -61,6 +61,7 @@ function getRandomMessage(messages) {
 // Ensure selectedMessage is not empty despite the user could already has used the message test mode
 var selectedMessage = getRandomMessage(messages);
 if (selectedMessage.length == 0) {
+  console.log('\n');
   throw new Error('[FAIL] The selected message is empty');
 }
 console.log('Selected message:' + '\n' + selectedMessage);
@@ -70,11 +71,11 @@ function checkMessageLength(selectedMessage) {
   if (selectedMessage.length < 160) {
     console.log('Message length (' + selectedMessage.length + ') < 160 chars --> OK');
   } else {
-    console.log('Message length (' + selectedMessage.length + ') > 160 chars --> NOT OK');
+    console.log('Message length (' + selectedMessage.length + ') > 160 chars --> NOT OK' + '\n');
     throw new Error('Message length is too large');
   }
 }
 
 checkMessageLength(selectedMessage);
 
-//sendMessageAsSms(messageReceiver, selectedMessage);
+sendMessageAsSms(messageReceiver, selectedMessage);
