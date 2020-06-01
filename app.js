@@ -56,7 +56,11 @@ function getRandomMessage(messages) {
   return messages[Math.floor(Math.random() * messages.length)];
 }
 
+// Ensure selectedMessage is not empty despite the user could already has used the message test mode
 var selectedMessage = getRandomMessage(messages);
+if (selectedMessage.length == 0) {
+  throw new Error('[FAIL] The selected message is empty');
+}
 console.log('Selected message:' + '\n' + selectedMessage);
 
 // SMS messages should be <160 chars to avoid splitting and multiple billing
