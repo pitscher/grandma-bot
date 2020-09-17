@@ -2,16 +2,13 @@
 .git
 .vscode
 node_modules
-docs
-db
 
 # Files
-gitlab-ci.yml
 .cache
-dummy.json
 npm-debug.log
 *.md
+LICENSE
+.env
 .gitignore
-mongostart.sh
 .editorconfig
-.eslintrc.json
+docker-start.sh
