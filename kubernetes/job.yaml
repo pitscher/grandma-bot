@@ -1,0 +1,15 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: grandmabot
+spec:
+  # Run at 08:01 AM on Saturday
+  schedule: "1 8 * * 6"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: grandmabot
+            image: yourDockerhubUsername/grandmabot:1.0
+          restartPolicy: OnFailure

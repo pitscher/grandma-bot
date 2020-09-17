@@ -2,6 +2,7 @@
 .git
 .vscode
 node_modules
+kubernetes
 
 # Files
 .cache
